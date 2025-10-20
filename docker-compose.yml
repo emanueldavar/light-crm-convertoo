@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: node server.js
+    environment:
+      - PORT=4000
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./backend:/app
+      - ./backend/data/db.json:/app/data/db.json
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    ports:
+      - '5173:5173'
+    environment:
+      - VITE_API_URL=http://backend:4000
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend

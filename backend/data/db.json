@@ -1,0 +1,29 @@
+{
+  "columns": [
+    {
+      "id": "column-novo-lead",
+      "name": "Novo Lead",
+      "color": "#6366F1",
+      "order": 0
+    },
+    {
+      "id": "column-contato",
+      "name": "Contato Inicial",
+      "color": "#22D3EE",
+      "order": 1
+    },
+    {
+      "id": "column-proposta",
+      "name": "Proposta Enviada",
+      "color": "#FBBF24",
+      "order": 2
+    },
+    {
+      "id": "column-fechado",
+      "name": "Fechado",
+      "color": "#34D399",
+      "order": 3
+    }
+  ],
+  "leads": []
+}
