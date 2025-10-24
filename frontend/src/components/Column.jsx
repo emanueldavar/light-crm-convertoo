@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { useDroppable, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { useDroppable } from '@dnd-kit/core';
 import { Card } from '@/components/Card.jsx';
 
 export function Column({
