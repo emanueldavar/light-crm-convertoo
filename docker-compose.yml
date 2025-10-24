@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./backend:/app
+    environment:
+      - PORT=4000
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./frontend:/app
+    environment:
+      - VITE_API_URL=http://backend:4000
+    depends_on:
+      - backend
+  sqlite:
+    image: nouchka/sqlite3:latest
+    command: tail -f /dev/null
+    volumes:
+      - ./backend/db/sqlite-data:/data

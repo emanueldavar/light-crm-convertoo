@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-slate-100 text-slate-900 transition-colors duration-300 ease-out;
+}
+
+a {
+  @apply text-primary;
+}
+
+.dark body {
+  color-scheme: dark;
+}

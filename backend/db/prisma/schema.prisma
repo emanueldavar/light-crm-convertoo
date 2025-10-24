@@ -1,0 +1,31 @@
+// Futuro esquema Prisma para persistência em SQLite
+// datasource db {
+//   provider = "sqlite"
+//   url      = env("DATABASE_URL")
+// }
+//
+// generator client {
+//   provider = "prisma-client-js"
+// }
+//
+// model Column {
+//   id      String  @id @default(uuid())
+//   name    String
+//   color   String
+//   order   Int
+//   leads   Lead[]
+// }
+//
+// model Lead {
+//   id        String   @id @default(uuid())
+//   name      String
+//   email     String
+//   phone     String?
+//   company   String?
+//   value     Float?
+//   notes     String?
+//   tags      Json
+//   createdAt DateTime @default(now())
+//   column    Column   @relation(fields: [columnId], references: [id])
+//   columnId  String
+// }
