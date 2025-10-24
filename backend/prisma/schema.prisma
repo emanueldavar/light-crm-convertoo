@@ -1,0 +1,45 @@
+// Prisma schema for SQLite persistence
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL") // e.g. file:./dev.db
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Column {
+  id      String  @id @default(uuid())
+  name    String
+  color   String
+  order   Int
+  leads   Lead[]
+}
+
+model Lead {
+  id        String    @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  value     Float?
+  notes     String?
+  tags      Json
+  createdAt DateTime  @default(now())
+  column    Column    @relation(fields: [columnId], references: [id])
+  columnId  String
+
+  comments  Comment[] // relation to comments
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  text      String
+  author    String
+  createdAt DateTime @default(now())
+
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+}

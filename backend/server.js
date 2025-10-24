@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import leadsRouter from './routes/leads.js';
 import columnsRouter from './routes/columns.js';
 import webhookRouter from './routes/webhook.js';
+import commentsRouter from './routes/comments.js';
 
 dotenv.config();
 
@@ -23,6 +24,10 @@ app.get('/', (req, res) => {
 app.use('/api/leads', leadsRouter);
 app.use('/api/columns', columnsRouter);
 app.use('/api/webhook', webhookRouter);
+
+// Comments endpoints (GET/POST) are defined in routes/comments.js
+// They use paths like /api/leads/:id/comments
+app.use('/api', commentsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Rota não encontrada.' });
